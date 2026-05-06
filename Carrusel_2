@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Miguel Angel Antunez Ruiz">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Miguel - Carrusel Pro</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            text-align: center;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        .titulo-superior {
+            color: #ff4b2b;
+            text-transform: uppercase;
+            margin: 20px 0;
+        }
+
+        /* NAVEGACIÓN SUPERIOR */
+        .nav-carrusel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a1a1a;
+            padding: 20px;
+            gap: 15px;
+            border-bottom: 3px solid #ff4b2b;
+        }
+
+        .nav-carrusel label {
+            background: #333;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            user-select: none;
+            display: none;
+            /* Oculto por defecto */
+        }
+
+        /* Botones fijos */
+        .nav-carrusel .btn-fijo {
+            display: inline-block;
+        }
+
+        #r1:checked~.nav-carrusel .btn-inicio {
+            background: #ff4b2b;
+        }
+
+        #r10:checked~.nav-carrusel .btn-final {
+            background: #ff4b2b;
+        }
+
+        .nav-carrusel label:hover {
+            background: #444;
+        }
+
+        /* LÓGICA DE FLECHAS: Solo una de cada clase por radio */
+        #r1:checked~.nav-carrusel .atras1,
+        #r1:checked~.nav-carrusel .sig2,
+        #r2:checked~.nav-carrusel .atras1,
+        #r2:checked~.nav-carrusel .sig3,
+        #r3:checked~.nav-carrusel .atras2,
+        #r3:checked~.nav-carrusel .sig4,
+        #r4:checked~.nav-carrusel .atras3,
+        #r4:checked~.nav-carrusel .sig5,
+        #r5:checked~.nav-carrusel .atras4,
+        #r5:checked~.nav-carrusel .sig6,
+        #r6:checked~.nav-carrusel .atras5,
+        #r6:checked~.nav-carrusel .sig7,
+        #r7:checked~.nav-carrusel .atras6,
+        #r7:checked~.nav-carrusel .sig8,
+        #r8:checked~.nav-carrusel .atras7,
+        #r8:checked~.nav-carrusel .sig9,
+        #r9:checked~.nav-carrusel .atras8,
+        #r9:checked~.nav-carrusel .sig10,
+        #r10:checked~.nav-carrusel .atras9,
+        #r10:checked~.nav-carrusel .sig10 {
+            display: inline-block;
+        }
+
+        /* VISOR */
+        .wrapper-fotos {
+            width: 85%;
+            max-width: 750px;
+            margin: 40px auto;
+            border: 5px solid #333;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .visor-carrusel {
+            display: flex;
+            width: 1000%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .visor-carrusel img {
+            width: 10%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        /* Movimientos */
+        #r1:checked~.wrapper-fotos .visor-carrusel {
+            transform: translateX(0%);
+        }
+
+        #r2:checked~.wrapper-fotos .visor-carrusel {
+            transform: translateX(-10%);
+        }
+
+        #r3:checked~.wrapper-fotos .visor-carrusel {
+            transform: translateX(-20%);
+        }
+
+        #r4:checked~.wrapper-fotos .visor-carrusel {
+            transform: translateX(-30%);
+        }
+
+        #r5:checked~.wrapper-fotos .visor-carrusel {
+            transform: translateX(-40%);
+        }
+
+        #r6:checked~.wrapper-fotos .visor-carrusel {
+            transform: translateX(-50%);
+        }
+
+        #r7:checked~.wrapper-fotos .visor-carrusel {
+            transform: translateX(-60%);
+        }
+
+        #r8:checked~.wrapper-fotos .visor-carrusel {
+            transform: translateX(-70%);
+        }
+
+        #r9:checked~.wrapper-fotos .visor-carrusel {
+            transform: translateX(-80%);
+        }
+
+        #r10:checked~.wrapper-fotos .visor-carrusel {
+            transform: translateX(-90%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="titulo-superior">MI CARRUSEL</h1>
+
+    <input type="radio" name="c" id="r1" checked>
+    <input type="radio" name="c" id="r2">
+    <input type="radio" name="c" id="r3">
+    <input type="radio" name="c" id="r4">
+    <input type="radio" name="c" id="r5">
+    <input type="radio" name="c" id="r6">
+    <input type="radio" name="c" id="r7">
+    <input type="radio" name="c" id="r8">
+    <input type="radio" name="c" id="r9">
+    <input type="radio" name="c" id="r10">
+
+    <nav class="nav-carrusel">
+        <label for="r1" class="btn-inicio btn-fijo">Inicio</label>
+
+        <label for="r1" class="atras1">&#10094;</label>
+        <label for="r2" class="atras2">&#10094;</label>
+        <label for="r3" class="atras3">&#10094;</label>
+        <label for="r4" class="atras4">&#10094;</label>
+        <label for="r5" class="atras5">&#10094;</label>
+        <label for="r6" class="atras6">&#10094;</label>
+        <label for="r7" class="atras7">&#10094;</label>
+        <label for="r8" class="atras8">&#10094;</label>
+        <label for="r9" class="atras9">&#10094;</label>
+
+        <label for="r2" class="sig2">&#10095;</label>
+        <label for="r3" class="sig3">&#10095;</label>
+        <label for="r4" class="sig4">&#10095;</label>
+        <label for="r5" class="sig5">&#10095;</label>
+        <label for="r6" class="sig6">&#10095;</label>
+        <label for="r7" class="sig7">&#10095;</label>
+        <label for="r8" class="sig8">&#10095;</label>
+        <label for="r9" class="sig9">&#10095;</label>
+        <label for="r10" class="sig10">&#10095;</label>
+
+        <label for="r10" class="btn-final btn-fijo">Final</label>
+    </nav>
+
+    <div class="wrapper-fotos">
+        <div class="visor-carrusel">
+            <img src="https://picsum.photos/id/11/800/450">
+            <img src="https://picsum.photos/id/22/800/450">
+            <img src="https://picsum.photos/id/33/800/450">
+            <img src="https://picsum.photos/id/44/800/450">
+            <img src="https://picsum.photos/id/55/800/450">
+            <img src="https://picsum.photos/id/66/800/450">
+            <img src="https://picsum.photos/id/77/800/450">
+            <img src="https://picsum.photos/id/88/800/450">
+            <img src="https://picsum.photos/id/99/800/450">
+            <img src="https://picsum.photos/id/101/800/450">
+        </div>
+    </div>
+
+</body>
+
+</html>
